@@ -1,4 +1,4 @@
-# code_translater
+# Code File Translater
 This python code can translate your code files written with chinese strings into english 😁.You can use the desigred code there are 3 types
 
 - `tran_sql.py` is used to translate a `.SQL` file
