@@ -2,6 +2,7 @@
 from sys import argv
 import re
 from googletrans import Translator
+from tqdm import tqdm
 
 def translate_php(file_path):
     # Initialize the translator
