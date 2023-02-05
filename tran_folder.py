@@ -24,8 +24,6 @@ def translate_html(folder_path):
                 for match in tqdm(matches, desc='Translating', total=len(html_text)):
                     chinese_text = match.group()
                     translated_text = translator.translate(chinese_text, dest='en').text
-                    cou += 1
-                    print(str(cou) + " - " + chinese_text + " = " +translated_text)
                     html_text = html_text.replace(chinese_text, translated_text, 1)
 
                 # Save the translated HTML file
