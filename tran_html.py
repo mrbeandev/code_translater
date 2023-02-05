@@ -1,6 +1,7 @@
 from sys import argv
 from googletrans import Translator
 import re
+from tqdm import tqdm
 
 def translate_html(file_path):
     # Open the HTML file
@@ -9,13 +10,11 @@ def translate_html(file_path):
 
     # Initialize the translator
     translator = Translator()
-    cou = 0
     # find all the chinese text and translate
-    for match in re.finditer(u'[\u4e00-\u9fff]+', html_text):
+    matches = re.finditer(u'[\u4e00-\u9fff]+', html_text)
+    for match in tqdm(matches, desc='Translating', total=len(html_text)):
         chinese_text = match.group()
         translated_text = translator.translate(chinese_text, dest='en').text
-        cou += 1
-        print(str(cou)+" - "+chinese_text+" = "+translated_text)
         html_text = html_text.replace(chinese_text, translated_text, 1)
 
     # Save the translated HTML file
